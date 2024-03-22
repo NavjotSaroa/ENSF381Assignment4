@@ -17,7 +17,7 @@ function HomeMainSection() {
     <main>
       <section>
         <h2>About Us</h2>
-        <p>Company Vision and Mission...</p>
+        <p>Welcome to our online store! We strive to provide the best products to you at the most competitive prices!</p>
         <button onClick={() => window.location.href = '/products'}>Shop Now</button>
       </section>
       <section>

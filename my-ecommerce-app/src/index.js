@@ -1,3 +1,9 @@
+// Assignment 4
+// Group Members:
+//    Navjot Saroa: 30193854
+//    Oussama Ouadihi: 30134399
+
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
