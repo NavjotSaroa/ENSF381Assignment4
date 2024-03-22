@@ -5,6 +5,7 @@ import Homepage from './component/Homepage.js';
 import Header from './component/Header.js';
 import Footer from './component/Footer.js';
 import HomeMainSection from './component/HomeMainSection.js';
+import ProductPage from './component/Productpage.jsx';
 
 
 import './App.css';
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/products" element={<ProductPage />} />
 
       </Routes>
     </Router>
