@@ -1,6 +1,6 @@
 // src/components/HomeMainSection.js
 import React, { useState, useEffect } from 'react';
-import reviews from '../data/reviews'; // Assume this is the path to your reviews.js file
+import reviews from '../data/reviews';
 
 function HomeMainSection() {
   const [randomReviews, setRandomReviews] = useState([]);
