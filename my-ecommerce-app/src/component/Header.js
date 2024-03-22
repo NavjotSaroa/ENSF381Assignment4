@@ -1,50 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from './logo.png';
+import logo from './logo.png'
 
 function Header() {
+  
   const headerStyle = {
     display: 'flex',
-    flexDirection: 'column', 
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '20px',
   };
 
-  const topContainerStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%', 
-  };
-
   const navStyle = {
     display: 'flex',
-    justifyContent: 'space-evenly',
-    width: '100vw',
-    textDecoration: 'underline', 
+    justifyContent: 'space-between',
+    width: '100%', 
+    marginTop: '100px'
   };
-
-  const linkStyle = { 
-    textDecoration: 'underline',
-    color: 'black', 
-    width: '33.33%', 
-    textAlign: 'center', 
+  const logoStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', 
   };
-
   return (
     <header style={headerStyle}>
-      <div style={topContainerStyle}> 
-        <div>
-          <img src={logo} alt="Logo" style={{ height: '100px' }} />
-        </div>
-        <div>
-          Company Name
-        </div>
+      <div>
+        <img src={logo} alt="Logo" style={{ height: '100px' }} /> 
       </div>
-      <div style={navStyle}> 
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/products" style={linkStyle}>Products</Link>
-        <Link to="/login" style={linkStyle}>Login</Link>
+      <div style={navStyle}>
+        <Link to="/" style={{ textDecoration: 'underline', color: 'blue' }}>Home</Link>
+        <Link to="/products" style={{ textDecoration: 'underline', color: 'blue' }}>Products</Link>
+        <Link to="/login" style={{ textDecoration: 'underline', color: 'blue' }}>Login</Link>
+      </div>
+      <div>
+        Company Name
       </div>
     </header>
   );
