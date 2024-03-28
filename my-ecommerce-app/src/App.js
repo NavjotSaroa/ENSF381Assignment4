@@ -9,6 +9,7 @@ import ProductPage from './component/Productpage.jsx';
 
 
 import './App.css';
+import LoginPage from './component/LoginPage.js';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/login" element={<LoginPage/>}/>
 
       </Routes>
     </Router>
