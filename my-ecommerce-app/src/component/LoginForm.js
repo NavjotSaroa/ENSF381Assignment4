@@ -1,44 +1,56 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
-const LoginForm = ({ switchToSignup }) => {
+const LoginForm = ({ onLogin, switchToSignup }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
-    if (username && password) {
-      console.log('Logged in with:', username, password);
-    } else {
-      alert('Please enter both username and password.');
+  const navigate = useNavigate();  // Initialize useNavigate
+
+  const handleLogin = async () => {
+    setError('');
+    setIsLoading(true);
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+      setIsLoading(false);
+      if (response.status === 200) {
+        onLogin(true);
+        navigate('/products');  // Navigate to products page on success
+      }
+    } catch (err) {
+      setIsLoading(false);
+      const errorMessage = err.response?.data?.error || 'Failed to login';
+      setError(errorMessage);
+      onLogin(false);
     }
   };
 
   return (
     <div>
-      <h2>Login Form</h2>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-      <button onClick={handleLogin}>Login</button>
-      </div>
-      <div>
-      <button onClick={switchToSignup}>Switch to Signup</button>
-      </div>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        disabled={isLoading}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        disabled={isLoading}
+      />
+      <button onClick={handleLogin} disabled={isLoading || !username || !password}>
+        {isLoading ? 'Logging In...' : 'Log In'}
+      </button>
+      <button onClick={switchToSignup} disabled={isLoading}>
+        Sign Up
+      </button>
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 };

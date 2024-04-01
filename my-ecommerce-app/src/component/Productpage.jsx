@@ -1,9 +1,7 @@
 // src/components/Productpage.js
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
 import ProductList from './ProductList';
 import Cart from './Cart';
-import Footer from './Footer';
 
 function ProductPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -45,7 +43,6 @@ function ProductPage() {
 
   return (
     <div className="product-page">
-      <Header />
       <table style={{ width: '100%' }}>
         <tbody>
           <tr>
@@ -54,7 +51,6 @@ function ProductPage() {
           </tr>
         </tbody>
       </table>
-      <Footer />
     </div>
   );
 }
